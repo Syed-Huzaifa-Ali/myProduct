@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useAppSelector } from '../../../app/hooks';
 import { selectProduct } from '../../../features/product/productSlice';
 
-const ProductsList = () => {
+const ProductsDetail = () => {
 
   const products = useAppSelector(selectProduct);
 
@@ -23,4 +23,4 @@ const ProductsList = () => {
   );
 };
 
-export default ProductsList;
+export default ProductsDetail;
