@@ -3,7 +3,7 @@ import { selectProduct } from '../../features/product/productSlice';
 import styles from '../../styles/productsList.module.css';
 import Link from 'next/link';
 
-const productsList = () => {
+const ProductsList = () => {
 
   const products = useAppSelector(selectProduct);
 
@@ -30,4 +30,4 @@ const productsList = () => {
   );
 };
 
-export default productsList;
+export default ProductsList;
