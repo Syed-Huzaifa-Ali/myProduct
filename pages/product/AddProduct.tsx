@@ -20,7 +20,7 @@ const AddProduct = () => {
     e.preventDefault();
     dispatch(addProduct(formData));
     setFormData({ name: '', description: '' });
-    router.push('/product/productsModification');
+    router.push('/product/ProductsModification');
   }
 
   return (

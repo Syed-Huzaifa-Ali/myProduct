@@ -9,8 +9,8 @@ const EditProduct = () => {
   const products = useAppSelector(selectProduct);
 
   const router = useRouter();
-  const { product_index } = router.query;
-  const product = products[Number(product_index)];
+  const { Product_Index } = router.query;
+  const product = products[Number(Product_Index)];
 
   const [formData, setFormData] = useState({
     name: product?.name,
@@ -21,12 +21,12 @@ const EditProduct = () => {
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const data: { index: number, name: string, description: string } = { index: Number(product_index), name, description }
+  const data: { index: number, name: string, description: string } = { index: Number(Product_Index), name, description }
 
   const onSubmit = e => {
     e.preventDefault();
     dispatch(editProduct(data));
-    router.push('/product/productsModification');
+    router.push('/product/ProductsModification');
   }
 
   return (

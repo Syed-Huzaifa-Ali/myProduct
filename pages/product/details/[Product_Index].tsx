@@ -7,9 +7,9 @@ const ProductsDetail = () => {
   const products = useAppSelector(selectProduct);
 
   const router = useRouter()
-  const { product_index } = router.query
+  const { Product_Index } = router.query
 
-  const product = products[Number(product_index)];
+  const product = products[Number(Product_Index)];
 
   return (
     <div className='container' style={{ alignContent: 'center' }}>

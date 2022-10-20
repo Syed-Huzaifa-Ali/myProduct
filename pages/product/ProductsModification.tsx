@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectProduct, deleteProduct } from '../../features/product/productSlice';
-import ProductsTable from './productsTable';
+import ProductsTable from './ProductsTable';
 
 const ProductModification = () => {
 
@@ -17,7 +17,7 @@ const ProductModification = () => {
         Add, Update and Delete any product that you like along with it&apos;s description
       </p>
       <div className="dash-buttons">
-        <span className="btn btn-light"><Link href="/product/addProduct">Add Product</Link></span>
+        <span className="btn btn-light"><Link href="/product/AddProduct">Add Product</Link></span>
       </div>
       <ProductsTable products={products} deleteProduct={deleteProduct} dispatch={dispatch} />
     </div>
