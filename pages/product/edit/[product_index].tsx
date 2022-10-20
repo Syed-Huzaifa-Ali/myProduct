@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { editProduct, selectProduct } from '../../../features/product/productSlice';
 
-const EditProduct: React.FC = () => {
+const EditProduct = () => {
 
   const dispatch = useAppDispatch();
   const products = useAppSelector(selectProduct);
@@ -35,7 +35,7 @@ const EditProduct: React.FC = () => {
         Edit a product
       </h1>
       <p className="lead">
-        Edit any product that you like along with it's description
+        Edit any product that you like along with it&apos;s description
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>

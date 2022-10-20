@@ -1,10 +1,9 @@
-import React from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { selectProduct } from '../../features/product/productSlice';
 import styles from '../../styles/productsList.module.css';
 import Link from 'next/link';
 
-const productsList: React.FC = () => {
+const productsList = () => {
 
   const products = useAppSelector(selectProduct);
 
@@ -14,7 +13,7 @@ const productsList: React.FC = () => {
         Products List
       </h1>
       <p className="lead">
-        Click any product that you like for it's description
+        Click any product that you like for it&apos;s description
       </p>
 
       <div className={styles.grid}>

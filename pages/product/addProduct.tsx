@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '../../app/hooks';
 import { addProduct } from '../../features/product/productSlice';
@@ -29,7 +29,7 @@ const AddProduct = () => {
         Add a product
       </h1>
       <p className="lead">
-        Add any product that you like along with it's description
+        Add any product that you like along with it&apos;s description
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>

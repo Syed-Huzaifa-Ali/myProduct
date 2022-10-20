@@ -1,9 +1,8 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import { useAppSelector } from '../../../app/hooks';
 import { selectProduct } from '../../../features/product/productSlice';
 
-const productsList: React.FC = () => {
+const productsList = () => {
 
   const products = useAppSelector(selectProduct);
 
