@@ -9,7 +9,7 @@ type Props = {
 
 const ProductTable = ({ products, deleteProduct, dispatch }: Props) => {
 
-    const prod = products.map((product, index) => (
+    const prod = products && products.map((product, index) => (
         <tr key={index}>
             <td>{product.name}</td>
             <td className="hide-sm">{product.description}</td>
