@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from '../../app/hooks';
 import { addProduct } from '../../features/product/productSlice';
@@ -7,19 +7,16 @@ const AddProduct = () => {
 
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const [formData, setFormData] = useState({
-    name: '',
-    description: ''
-  });
+  const nameRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLTextAreaElement>(null);
 
-  const { name, description } = formData;
-
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = e => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addProduct(formData));
-    setFormData({ name: '', description: '' });
+    const data: { name: string, description: string } = {
+      name: String(nameRef.current?.value),
+      description: String(descriptionRef.current?.value)
+    }
+    dispatch(addProduct(data));
     router.push('/product/ProductsModification');
   }
 
@@ -34,7 +31,7 @@ const AddProduct = () => {
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <input type="text" placeholder="* Product name" name="name" value={name} onChange={e => onChange(e)} required />
+          <input type="text" placeholder="* Product name" name="name" ref={nameRef} required />
         </div>
 
         <div className="form-group">
@@ -44,7 +41,7 @@ const AddProduct = () => {
             rows={5}
             placeholder="* Product Description"
             style={{ resize: "none" }}
-            value={description} onChange={e => onChange(e)}
+            ref={descriptionRef}
             required
           ></textarea>
         </div>

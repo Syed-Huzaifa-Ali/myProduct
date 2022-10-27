@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 type Props = {
     products: Array<{ name: string, description: string }>;
-    deleteProduct: (e) => void;
-    dispatch: (e) => void;
+    deleteProduct: (e: any) => void;
+    dispatch: (e: any) => void;
 };
 
 const ProductTable = ({ products, deleteProduct, dispatch }: Props) => {

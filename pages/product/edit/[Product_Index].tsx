@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { editProduct, selectProduct } from '../../../features/product/productSlice';
@@ -12,19 +12,12 @@ const EditProduct = () => {
   const { Product_Index } = router.query;
   const product = products[Number(Product_Index)];
 
-  const [formData, setFormData] = useState({
-    name: product?.name,
-    description: product?.description
-  });
+  const nameRef = useRef<HTMLInputElement>(product?.name);
+  const descriptionRef = useRef<HTMLTextAreaElement>(product?.description);
 
-  const { name, description } = formData;
-
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const data: { index: number, name: string, description: string } = { index: Number(Product_Index), name, description }
-
-  const onSubmit = e => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const data: { index: number, name: string, description: string } = { index: Number(Product_Index), name: nameRef.current.value, description: descriptionRef.current.value }
     dispatch(editProduct(data));
     router.push('/product/ProductsModification');
   }
@@ -40,7 +33,7 @@ const EditProduct = () => {
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <input type="text" placeholder="* Product name" name="name" value={name} onChange={e => onChange(e)} required />
+          <input type="text" placeholder="* Product name" name="name" defaultValue={String(nameRef.current)} ref={nameRef} required />
         </div>
 
         <div className="form-group">
@@ -50,7 +43,8 @@ const EditProduct = () => {
             rows={5}
             placeholder="* Product Description"
             style={{ resize: "none" }}
-            value={description} onChange={e => onChange(e)}
+            defaultValue={String(descriptionRef.current)}
+            ref={descriptionRef}
             required
           ></textarea>
         </div>
